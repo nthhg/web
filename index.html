@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Kase - Gabinetes de PC personalizados</title>
+    <style>
+        :root {
+            --primary: #E53935; /* Rojo principal */
+            --primary-dark: #C62828; /* Rojo oscuro */
+            --primary-light: #FFCDD2; /* Rojo claro */
+            --accent: #FF5252; /* Rojo acento */
+            --light: #FFFFFF;
+            --dark: #212121;
+            --gray: #757575;
+        }
+        
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        section {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(229, 57, 53, 0.9);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .cta h2::after {
+            background: white;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        .cta-button.accent {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .cta-button.accent:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 15px;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">CUSTOMIZE KASE</div>
+        <div class="tagline">
+            Transformamos gabinetes simples en piezas únicas, visualmente impactantes, y ajustadas al estilo de cada cliente, todo a un precio accesible.
+        </div>
+    </header>
+    
+    <section id="about">
+        <h2>¿QUÉ ES CUSTOMIZE KASE?</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.2rem;">
+            Customize Kase no solo arma gabinetes, crea identidad digital. Tu PC, tu estilo, tu historia.
+        </p>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <img src="img1.jpg" alt="Gabinete personalizado" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+        </div>
+    </section>
+    
+    <section id="what-we-do" style="background-color: #f9f9f9;">
+        <h2>¿QUÉ HACEMOS?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Personalización única</h3>
+                <p>Creamos gabinetes de PC completamente personalizados que reflejan tu estilo personal.</p>
+                <img src="img2.jpg" alt="Personalización de gabinete" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-top: 1rem;">
+            </div>
+            <div class="feature-card">
+                <h3>Reciclaje tecnológico</h3>
+                <p>Trabajamos con gabinetes reutilizados o traídos por el cliente, promoviendo la sostenibilidad.</p>
+                <img src="img3.jpg" alt="Reciclaje tecnológico" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-top: 1rem;">
+            </div>
+            <div class="feature-card">
+                <h3>Arte digital</h3>
+                <p>Incorporamos diseños artísticos y creativos para hacer de tu gabinete una pieza única.</p>
+                <img src="img4.jpg" alt="Arte digital en gabinetes" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-top: 1rem;">
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery">
+        <h2>GALERÍA DE PROYECTOS</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Algunos de nuestros trabajos más recientes</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="img5.jpg" alt="Proyecto 1">
+                <div class="gallery-caption">Gabinete Gamer Rojo</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img6.jpg" alt="Proyecto 2">
+                <div class="gallery-caption">Diseño Abstracto Azul</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img7.jpg" alt="Proyecto 3">
+                <div class="gallery-caption">Estilo Minimalista Negro</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img8.jpg" alt="Proyecto 4">
+                <div class="gallery-caption">Edición Especial Aniversario</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img9.jpg" alt="Proyecto 5">
+                <div class="gallery-caption">Tema Cyberpunk</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img10.jpg" alt="Proyecto 6">
+                <div class="gallery-caption">Diseño Personalizado</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="why-us">
+        <h2>¿POR QUÉ NACE EL PROYECTO?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Identidad local</h3>
+                <p>Brindamos una alternativa accesible y de calidad con identidad local.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Promoción del arte</h3>
+                <p>Promovemos la creatividad y el arte digital en cada creación.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Emprendimiento</h3>
+                <p>Apoyamos el emprendimiento y la innovación en el mundo tecnológico.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="differentiation" style="background-color: #f9f9f9;">
+        <h2>¿QUÉ NOS DIFERENCIA?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Precios accesibles</h3>
+                <p>Ofrecemos personalización de alta calidad a precios competitivos.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Atención personalizada</h3>
+                <p>Servicio rápido y dedicado para resolver todas tus dudas y necesidades.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Presencia digital</h3>
+                <p>Contamos con canales activos para mostrar nuestro trabajo y facilitar pedidos.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>CONTÁCTANOS</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">¿Tienes un proyecto en mente? Escríbenos y te ayudaremos a hacerlo realidad</p>
+        
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Teléfono (opcional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="quote">Cotización de proyecto</option>
+                        <option value="question">Consulta general</option>
+                        <option value="custom">Pedido personalizado</option>
+                        <option value="other">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>¿LISTO PARA PERSONALIZAR TU GABINETE?</h2>
+        <p style="max-width: 700px; margin: 0 auto;">Contáctanos a través de nuestros canales y comienza a crear tu pieza única.</p>
+        
+        <div class="cta-buttons">
+            <a href="https://wa.me/+50660932608" class="cta-button"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+50660932608" class="cta-button"><i class="fas fa-phone"></i> Llamar ahora</a>
+            <a href="#contact" class="cta-button accent"><i class="fas fa-envelope"></i> Formulario</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;">CUSTOMIZE KASE</div>
+            <p>Tu PC, tu estilo, tu historia.</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <div class="copyright">
+                © 2023 Customize Kase. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
